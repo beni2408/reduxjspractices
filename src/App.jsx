@@ -1,12 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "./Slice/themeSlice";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 
 const App = () => {
   const dispatch = useDispatch();
 
   const mode = useSelector((state) => state.theme.mode);
-  const { todos } = useSelector((state) => state.todo);
 
   return (
     <>
@@ -26,9 +27,8 @@ const App = () => {
         >
           {mode === "light" ? "🌗" : "☀️"}
         </button>
-        {todos.map((todo, index) => (
-          <p key={index}>{todo}</p>
-        ))}
+        <AddTodo />
+        <TodoList />
       </div>
     </>
   );
