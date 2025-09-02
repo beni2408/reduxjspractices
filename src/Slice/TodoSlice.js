@@ -4,12 +4,21 @@ import React from "react";
 const todoSlice = createSlice({
   name: "todo",
   initialState: {
-    todos: [],
+    todos: ["Buy Groceries", "Read Book", "Write "],
   },
   reducers: {
-    // addTodo: (state, action) => {},
-    // markcompleted: (state, action) => {},
-    // deleteTodo: (state, action) => {},
+    addTodo: (state, action) => {
+      console.log("action.payload", action);
+      console.log("stat.todos before:", state);
+    },
+    markcompleted: (state, action) => {
+      console.log("action.payload", action);
+      console.log("stat.todos before:", state);
+    },
+    deleteTodo: (state, action) => {
+      console.log("action.payload", action);
+      console.log("stat.todos before:", state);
+    },
   },
 });
 

@@ -6,6 +6,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   const mode = useSelector((state) => state.theme.mode);
+  const { todos } = useSelector((state) => state.todo);
 
   return (
     <>
@@ -25,6 +26,9 @@ const App = () => {
         >
           {mode === "light" ? "🌗" : "☀️"}
         </button>
+        {todos.map((todo, index) => (
+          <p key={index}>{todo}</p>
+        ))}
       </div>
     </>
   );
