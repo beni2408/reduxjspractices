@@ -1,7 +1,33 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "./Slice/themeSlice";
 
 const App = () => {
-  return <h1>App</h1>;
+  const dispatch = useDispatch();
+
+  const mode = useSelector((state) => state.theme.mode);
+
+  return (
+    <>
+      <div
+        style={{
+          background: mode === "light" ? "white" : "black",
+          color: mode === "light" ? "black" : "white",
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <h1> Current Theme:{mode}</h1>
+        <button
+          onClick={() => {
+            dispatch(toggleTheme());
+          }}
+        >
+          {mode === "light" ? "🌗" : "☀️"}
+        </button>
+      </div>
+    </>
+  );
 };
 
 export default App;
