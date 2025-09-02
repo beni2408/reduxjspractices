@@ -10,18 +10,16 @@ const todoSlice = createSlice({
     addTodo: (state, action) => {
       state.todos.push({ task: action.payload, completed: false });
     },
-    markcompleted: (state, action) => {
-      console.log("action.payload", action);
-      console.log("stat.todos before:", state);
-      state.todos[action.payload].completed = true;
+    toggleComplete: (state, action) => {
+      state.todos[action.payload].completed =
+        !state.todos[action.payload].completed;
     },
     deleteTodo: (state, action) => {
-      console.log("action.payload", action);
-      console.log("stat.todos before:", state);
+      state.todos.splice(action.payload, 1);
     },
   },
 });
 
-export const { addTodo, markcompleted, deleteTodo } = todoSlice.actions;
+export const { addTodo, toggleComplete, deleteTodo } = todoSlice.actions;
 const todoReducer = todoSlice.reducer;
 export default todoReducer;
